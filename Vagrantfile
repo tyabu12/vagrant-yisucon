@@ -74,6 +74,10 @@ Vagrant.configure("2") do |config|
   #   sudo apt-get install -y apache2
   # SHELL
 
+  if Vagrant.has_plugin?("vagrant-vbguest")
+      config.vbguest.no_install = true
+  end
+
   config.vm.provision :shell, inline: <<-SHELL
     set -e
     yum install -y gcc git
